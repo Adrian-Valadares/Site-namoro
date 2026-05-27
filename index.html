@@ -4,121 +4,96 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Nosso Amor ❤️</title>
+  <title>Nosso Amor</title>
+
+  <!-- FONT AWESOME (ÍCONE DE CORAÇÃO) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- FONTES -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
-  <!-- CSS -->
   <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
 
-  <div class="container">
+<div class="container">
 
-    <div class="title">
-      <h1>Eu Te Amo ❤</h1>
-      <p>Desde o dia em que você entrou na minha vida...</p>
+  <div class="title">
+    <h1>Eu Te Amo <i class="fa-solid fa-heart heart-icon"></i></h1>
+    <p>Desde o dia em que você entrou na minha vida...</p>
+  </div>
+
+  <!-- TIMER -->
+  <div class="timer">
+    <h2>Entreguei a ti meu coração há exatos:</h2>
+
+    <div class="time-grid">
+      <div class="time-box"><span id="days">0</span>Dias</div>
+      <div class="time-box"><span id="hours">0</span>Horas</div>
+      <div class="time-box"><span id="minutes">0</span>Min</div>
+      <div class="time-box"><span id="seconds">0</span>Seg</div>
+    </div>
+  </div>
+
+  <!-- MUSIC -->
+  <div class="music-player">
+    <img class="music-cover" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=500&auto=format&fit=crop">
+
+    <div class="music-info">
+      <span class="music-label">Nossa música 🎵</span>
+      <h3>Lisboa</h3>
+      <p>ANAVITÓRIA</p>
     </div>
 
-    <!-- TIMER -->
-    <div class="timer">
-        
+    <audio controls autoplay loop>
+      <source src="musica/lisboa-visualizer.mp3" type="audio/mp3">
+    </audio>
+  </div>
 
-      <h2>Meu coração é teu há:</h2>
+  <!-- CARROSSEL -->
+  <div class="carousel-container">
 
-      <div class="time-grid">
-
-        <div class="time-box">
-          <span id="days">0</span>
-          Dias
-        </div>
-
-        <div class="time-box">
-          <span id="hours">0</span>
-          Horas
-        </div>
-
-        <div class="time-box">
-          <span id="minutes">0</span>
-          Minutos
-        </div>
-
-        <div class="time-box">
-          <span id="seconds">0</span>
-          Segundos
-        </div>
-        
-      </div>
-      
+    <div class="carousel">
+      <div class="slides" id="slides"></div>
     </div>
-    <!-- MÚSICA -->
 
-<div class="music-player">
+    <div class="buttons">
+      <button class="btn" onclick="prevSlideManual()">
+  <i class="fa-solid fa-arrow-left"></i>
+  Anterior
+</button>
 
-  <img
-    src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=500&auto=format&fit=crop"
-    alt="Capa da música"
-    class="music-cover"
-  >
-
-  <div class="music-info">
-
-    <span class="music-label">
-      Nossa música 🎵
-    </span>
-
-    <h3>Lisboa</h3>
-
-    <p>ANA VITÓRIA</p>
+<button class="btn" onclick="nextSlideManual()">
+  Próxima
+  <i class="fa-solid fa-arrow-right"></i>
+</button>
+    </div>
 
   </div>
 
-  <audio controls autoplay loop>
-    <source src="musica/lisboa-visualizer.mp3" type="audio/mp3">
-  </audio>
+  <div class="love-text">
+    <i class="fa-solid fa-heart heart-icon"></i>
+    Você é a melhor coisa que aconteceu na minha vida.
+    Cada momento ao seu lado vira uma memória especial.
+    Obrigado por existir.
+    <i class="fa-solid fa-heart heart-icon"></i>
+  </div>
 
 </div>
 
-    <!-- CARROSSEL -->
-    <div class="carousel-container">
-
-      <div class="carousel">
-
-        <div class="slides" id="slides">
-
-          <!-- TROQUE PELAS FOTOS DE VOCÊS -->
-
-          <img src="img/foto1.jpg" alt="">
-          <img src="img/foto2.jpg" alt="">
-          <img src="img/foto3.jpg" alt="">
-          <img src="img/foto4.jpg" alt="">
-
-        </div>
-
-      </div>
-
-      <div class="buttons">
-        <button onclick="prevSlide()">⬅ Anterior</button>
-        <button onclick="nextSlide()">Próxima ➡</button>
-      </div>
-
-    </div>
-
-    <!-- TEXTO -->
-    <div class="love-text">
-      ❤ Você é a melhor coisa que aconteceu na minha vida.
-      Cada momento ao seu lado vira uma memória especial.
-      Obrigado por existir. ❤
-    </div>
-
-  </div>
-
-  <!-- JS -->
-  <script src="/JavaScript/script.js"></script>
-
+<script src="/JavaScript/script.js"></script>
+<footer class="footer">
+  <a href="https://adrian-valadares.netlify.app/" target="_blank">
+    <i class="fa-solid fa-heart heart-icon"></i>
+    Feito com amor, pelo seu eterno namorado
+    <i class="fa-solid fa-heart heart-icon"></i>
+  </a>
+</footer>
 </body>
+
+
+
 </html>

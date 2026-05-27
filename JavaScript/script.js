@@ -1,135 +1,85 @@
-// data do relacionamento
+// =========================
+// TIMER
+// =========================
 const startDate = new Date("2025-12-12T00:00:00");
 
-// função que atualiza o timer
-function updateTimer(){
-
+function updateTimer() {
   const now = new Date();
-
-  // diferença entre a data atual e a data do namoro
   const diff = now - startDate;
 
-  // cálculos do tempo
-  const days =
-    Math.floor(diff / (1000 * 60 * 60 * 24));
-
-  const hours =
-    Math.floor((diff / (1000 * 60 * 60)) % 24);
-
-  const minutes =
-    Math.floor((diff / (1000 * 60)) % 60);
-
-  const seconds =
-    Math.floor((diff / 1000) % 60);
-
-  // atualiza os elementos na tela
-  document.getElementById("days").innerText = days;
-
-  document.getElementById("hours").innerText = hours;
-
-  document.getElementById("minutes").innerText = minutes;
-
-  document.getElementById("seconds").innerText = seconds;
+  document.getElementById("days").innerText = Math.floor(diff / 86400000);
+  document.getElementById("hours").innerText = Math.floor((diff / 3600000) % 24);
+  document.getElementById("minutes").innerText = Math.floor((diff / 60000) % 60);
+  document.getElementById("seconds").innerText = Math.floor((diff / 1000) % 60);
 }
 
-// atualiza o timer a cada segundo
 setInterval(updateTimer, 1000);
-
 updateTimer();
 
 
-// =======================
+// =========================
 // CARROSSEL
-// =======================
+// =========================
+const slides = document.getElementById("slides");
 
-// pega os slides
-const slides =
-  document.getElementById("slides");
+// cria imagens dinamicamente
+for (let i = 1; i <= 29; i++) {
+  const img = document.createElement("img");
+  img.src = `img/ft${i}.webp`;
+  img.loading = "lazy";
+  slides.appendChild(img);
+}
 
-// pega todas as imagens
-const images =
-  document.querySelectorAll(".slides img");
-
-// índice atual
 let index = 0;
+let autoSlide = setInterval(nextSlide, 4000);
 
-// mostra o slide atual
-function showSlide(){
-
-  slides.style.transform =
-  `translateX(-${index * 100}%)`;
+function showSlide() {
+  slides.style.transform = `translateX(-${index * 100}%)`;
 }
 
-// próximo slide
-function nextSlide(){
-
-  index++;
-
-  // volta pro começo
-  if(index >= images.length){
-    index = 0;
-  }
-
+function nextSlide() {
+  index = (index + 1) % slides.children.length;
   showSlide();
 }
 
-// slide anterior
-function prevSlide(){
-
-  index--;
-
-  // vai pro último slide
-  if(index < 0){
-    index = images.length - 1;
-  }
-
+function prevSlide() {
+  index = (index - 1 + slides.children.length) % slides.children.length;
   showSlide();
 }
 
-// troca automática
-setInterval(nextSlide, 4000);
+function resetAutoSlide() {
+  clearInterval(autoSlide);
+  autoSlide = setInterval(nextSlide, 4000);
+}
+
+function nextSlideManual() {
+  nextSlide();
+  resetAutoSlide();
+}
+
+function prevSlideManual() {
+  prevSlide();
+  resetAutoSlide();
+}
 
 
-// =======================
-// CORAÇÕES
-// =======================
-
-// cria os corações caindo
+// =========================
+// CORAÇÕES ANIMADOS
+// =========================
 function createHeart() {
-
-  const heart =
-    document.createElement("div");
-
+  const heart = document.createElement("div");
   heart.classList.add("heart");
 
-  heart.innerHTML = "❤";
-
-  // posição aleatória
-  heart.style.left =
-    Math.random() * window.innerWidth + "px";
-
-  // tamanho aleatório
-  const size =
-    Math.random() * 10 + 10;
-
-  heart.style.fontSize =
-    size + "px";
-
-  // velocidade aleatória
-  heart.style.animationDuration =
-    Math.random() * 4 + 6 + "s";
-
-  // opacidade
-  heart.style.opacity =
-    Math.random() * 0.7 + 0.95;
+  heart.style.left = Math.random() * window.innerWidth + "px";
+  heart.style.fontSize = `${Math.random() * 12 + 10}px`;
+  heart.style.animationDuration = `${Math.random() * 3 + 5}s`;
+  heart.style.opacity = "0.8";
 
   document.body.appendChild(heart);
 
-  // remove o coração depois
   setTimeout(() => {
     heart.remove();
-  }, 10000);
+  }, 8000);
 }
 
-// cria corações continuamente
 setInterval(createHeart, 500);
