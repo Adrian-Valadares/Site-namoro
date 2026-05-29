@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- FONTES -->
+   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Patrick+Hand&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
@@ -37,20 +38,104 @@
       <div class="time-box"><span id="seconds">0</span>Seg</div>
     </div>
   </div>
+<!-- =========================================
+     MUSIC PLAYER
+========================================= -->
 
-  <!-- MUSIC -->
-  <div class="music-player">
-    <img class="music-cover" src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=500&auto=format&fit=crop">
+<div class="music-player">
 
-    <div class="music-info">
-      <span class="music-label">Nossa música 🎵</span>
-      <h3>Lisboa</h3>
-      <p>ANAVITÓRIA</p>
+  <!-- TOPO -->
+  <div class="music-top">
+
+    <!-- ESQUERDA -->
+    <div class="music-left">
+
+      <img
+        class="music-cover"
+        src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=500&auto=format&fit=crop"
+        alt="Capa"
+      >
+
+      <div class="music-info">
+
+        <span class="music-label">
+          Nossa música 🎵
+        </span>
+
+        <h3>Lisboa</h3>
+
+        <p>ANAVITÓRIA</p>
+
+      </div>
+
     </div>
 
-    <audio controls autoplay loop>
-      <source src="musica/lisboa-visualizer.mp3" type="audio/mp3">
-    </audio>
+    <!-- DIREITA -->
+    <div class="music-controls">
+
+      <!-- PLAY -->
+      <button class="play-btn" id="playBtn">
+
+        <span class="play-icon" id="playIcon">
+          ▶
+        </span>
+
+      </button>
+
+      <!-- EQUALIZER -->
+      <div class="equalizer" id="equalizer">
+
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
+
+</div>
+
+    </div>
+
+  </div>
+
+  <!-- BARRA -->
+  <div class="music-progress">
+
+    <span id="currentTime">0:00</span>
+
+    <input
+      type="range"
+      id="progressBar"
+      value="0"
+      min="0"
+      max="100"
+    >
+
+    <span id="duration">0:00</span>
+
+  </div>
+
+  <!-- AUDIO -->
+  <audio id="audio" loop>
+
+    <source
+      src="musica/lisboa-visualizer.mp3"
+      type="audio/mp3"
+    >
+
+  </audio>
+
+</div>
   </div>
 
   <!-- CARROSSEL -->
@@ -85,15 +170,15 @@
 </div>
 
 <script src="/JavaScript/script.js"></script>
+
+</body>
+
 <footer class="footer">
   <a href="https://adrian-valadares.netlify.app/" target="_blank">
     <i class="fa-solid fa-heart heart-icon"></i>
-    Feito com amor, pelo seu eterno namorado
+    Feito com amor, pelo seu eterno namorado.
     <i class="fa-solid fa-heart heart-icon"></i>
   </a>
 </footer>
-</body>
-
-
 
 </html>

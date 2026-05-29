@@ -72,14 +72,120 @@ function createHeart() {
 
   heart.style.left = Math.random() * window.innerWidth + "px";
   heart.style.fontSize = `${Math.random() * 12 + 10}px`;
-  heart.style.animationDuration = `${Math.random() * 3 + 5}s`;
+  heart.style.animationDuration = `${Math.random() * 3 + 6.5}s`;
   heart.style.opacity = "0.8";
 
   document.body.appendChild(heart);
 
   setTimeout(() => {
     heart.remove();
-  }, 8000);
+  }, 10000);
 }
+setInterval(createHeart, 450);
 
-setInterval(createHeart, 500);
+// =========================================
+// PLAYER
+// =========================================
+
+const audio = document.getElementById("audio");
+
+const playBtn = document.getElementById("playBtn");
+
+const playIcon = document.getElementById("playIcon");
+
+const equalizer = document.getElementById("equalizer");
+
+const progressBar = document.getElementById("progressBar");
+
+const currentTimeEl = document.getElementById("currentTime");
+
+const durationEl = document.getElementById("duration");
+
+let isPlaying = false;
+
+/* PLAY */
+
+playBtn.addEventListener("click", () => {
+
+  if(!isPlaying){
+
+    audio.play();
+
+    playBtn.classList.add("pause");
+
+    playIcon.innerHTML = "❚❚";
+
+    equalizer.classList.add("playing");
+
+    isPlaying = true;
+
+  } else {
+
+    audio.pause();
+
+    playBtn.classList.remove("pause");
+
+    playIcon.innerHTML = "▶";
+
+    equalizer.classList.remove("playing");
+
+    isPlaying = false;
+
+  }
+
+});
+
+/* DURAÇÃO */
+
+audio.addEventListener("loadedmetadata", () => {
+
+  progressBar.max = audio.duration;
+
+  durationEl.innerHTML = formatTime(audio.duration);
+
+});
+
+/* UPDATE */
+
+audio.addEventListener("timeupdate", () => {
+
+  const progressPercent =
+  (audio.currentTime / audio.duration) * 100;
+
+progressBar.style.setProperty(
+  "--progress",
+  `${progressPercent}%`
+);
+
+  progressBar.value = audio.currentTime;
+
+  currentTimeEl.innerHTML =
+    formatTime(audio.currentTime);
+
+});
+
+/* VOLTAR MÚSICA */
+
+progressBar.addEventListener("input", () => {
+
+  audio.currentTime = progressBar.value;
+
+});
+
+/* FORMATADOR */
+
+function formatTime(time){
+
+  const minutes =
+    Math.floor(time / 60);
+
+  let seconds =
+    Math.floor(time % 60);
+
+  if(seconds < 10){
+    seconds = "0" + seconds;
+  }
+
+  return `${minutes}:${seconds}`;
+
+}
